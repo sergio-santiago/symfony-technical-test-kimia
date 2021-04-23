@@ -1,0 +1,28 @@
+* {
+    font-size: 20px
+}
+
+div {
+    margin: 0 0 10px;
+}
+
+label {
+    margin-right: 5px;
+}
+
+td {
+    padding-left: 10px
+}
+
+#navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 0 10px;
+    border-bottom: 3px dashed black;
+}
+
+#navbar li {
+    display: inline;
+    font-size: 20px;
+    margin: 15px;
+}

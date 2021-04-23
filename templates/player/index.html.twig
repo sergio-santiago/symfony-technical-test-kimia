@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Players{% endblock %}
+
+{% block body %}
+    <h2>Players</h2>
+
+    <h3><a href="{{ path('player_new') }}">Create new player</a></h3>
+
+    <table class="table" border="1" style="border-collapse: collapse; width:100%">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Team</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for player in players %}
+            <tr style="background-color: {{ player.team.hexColor }}">
+                <td>{{ player.id }}</td>
+                <td>{{ player.name }}</td>
+                <td>{{ player.position }}</td>
+                <td><a href="{{ path('team_edit', {'id': player.team.id}) }}">{{ player.team }}</a></td>
+                <td><a href="{{ path('player_edit', {'id': player.id}) }}">edit</a>                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
