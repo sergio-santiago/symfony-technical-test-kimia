@@ -1,0 +1,32 @@
+---
+version: '3.3'
+services:
+    php:
+        build:
+            context: .docker/php
+            dockerfile: Dockerfile
+            args:
+                XDEBUG_KEY: "symfony_technical_test_kimia"
+        expose:
+            - '9000'
+        volumes:
+            - ./:/opt/app-root
+    web:
+        build: .docker/nginx
+        restart: unless-stopped
+        ports:
+            - '81:80'
+        depends_on:
+            - php
+        volumes:
+            - ./:/opt/app-root:cached
+    mysql:
+        build: .docker/mysql
+        command: --default-authentication-plugin=mysql_native_password
+        restart: unless-stopped
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+        expose:
+            - '3306'
+
+    #docker-compose exec mysql mysql -uroot -ppassword symfony_technical_test_kimia

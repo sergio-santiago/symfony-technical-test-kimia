@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Game{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/game.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <h2>Game</h2>
+    <p>Punctuation: <b><span id="punctuation_counter" style="font-size: 30px; padding: 15px"></span></b></p>
+    <p>Rest players: <b><span id="rest_players_counter"></span></b></p>
+    <hr>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+    <hr>
+    <button class="btn" id="validate_game">Validate game</button>
+    <button style="display: none" class="btn" id="restart_game" onclick="location.reload()">Restart</button>
+{% endblock %}
