@@ -17,25 +17,24 @@ class Team
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"players_serialization", "teams_serialization"})
+     * @Groups({"players_serialization"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"players_serialization", "teams_serialization"})
+     * @Groups({"players_serialization"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=7)
-     * @Groups({"players_serialization", "teams_serialization"})
+     * @Groups({"players_serialization"})
      */
     private $hexColor;
 
     /**
      * @ORM\OneToMany(targetEntity=Player::class, mappedBy="team", orphanRemoval=true)
-     * @Groups({"teams_serialization"})
      */
     private $players;
 

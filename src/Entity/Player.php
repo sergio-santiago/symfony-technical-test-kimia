@@ -18,20 +18,20 @@ class Player
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"players_serialization", "teams_serialization"})
+     * @Groups({"players_serialization"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"players_serialization", "teams_serialization"})
+     * @Groups({"players_serialization"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Choice(choices=Player::POSITIONS, message="Choose a valid position.")
-     * @Groups({"players_serialization", "teams_serialization"})
+     * @Groups({"players_serialization"})
      */
     private $position;
 

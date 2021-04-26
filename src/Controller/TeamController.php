@@ -91,18 +91,4 @@ class TeamController extends AbstractController
         return $this->redirectToRoute('team_index');
     }
 
-    ///**
-    // * @Route("/{id}", name="team_ajax", methods={"POST"})
-    // */
-    //public function delete2(Request $request, Team $team): Response
-    //{
-    //    if ($this->isCsrfTokenValid('delete'.$team->getId(), $request->request->get('_token'))) {
-    //        $entityManager = $this->getDoctrine()->getManager();
-    //        $entityManager->remove($team);
-    //        $entityManager->flush();
-    //    }
-    //
-    //    return $this->redirectToRoute('team_index');
-    //}
-
 }

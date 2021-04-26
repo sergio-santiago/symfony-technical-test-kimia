@@ -4,11 +4,15 @@ namespace App\Controller;
 
 use App\Form\GameType;
 use App\Repository\PlayerRepository;
-use App\Repository\TeamRepository;
-use App\Services\Serializer;
+use Doctrine\Common\Annotations\AnnotationReader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
+use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 /**
  * @Route("/game")
@@ -34,7 +38,7 @@ class GameController extends AbstractController
     /**
      * @Route("/ajax-random-players", name="game_ajax_random_players", methods={"GET"})
      */
-    public function ajaxRandomPlayers(PlayerRepository $playerRepository, Serializer $serializer): Response
+    public function ajaxRandomPlayers(PlayerRepository $playerRepository): Response
     {
         $players = $playerRepository->findAll();
 
@@ -45,19 +49,10 @@ class GameController extends AbstractController
             $randomPlayers[] = $players[$index];
         }
 
-        $data = $serializer->jsonSerialize($randomPlayers, ['players_serialization']);
+        $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
+        $serializer = new Serializer([new ObjectNormalizer($classMetadataFactory)], [new JsonEncoder()]);
+        $responseJson = $serializer->serialize($randomPlayers, 'json', ['groups' => ['players_serialization']]);
 
-        return new Response($data);
-    }
-
-    /**
-     * @Route("/ajax-teams", name="game_ajax_teams", methods={"GET"})
-     */
-    public function ajaxTeams(TeamRepository $teamRepository, Serializer $serializer): Response
-    {
-        $teams = $teamRepository->findAll();
-        $data = $serializer->jsonSerialize($teams, ['teams_serialization']);
-
-        return new Response($data);
+        return new Response($responseJson);
     }
 }
