@@ -4,7 +4,7 @@ Technical test built for Kimia: a small football minigame backed by a CRUD for t
 teams and players it draws from.
 
 The original requirements are in
-[doc/REQUISITES_SymfonyTechnicalTestKimia.pdf](https://github.com/sergio-santiago/symfony-technical-test-kimia/blob/main/doc/REQUISITES_SymfonyTechnicalTestKimia.pdf).
+[doc/REQUISITES_SymfonyTechnicalTestKimia.pdf](https://github.com/sergio-santiago/technical-test-symfony-kimia/blob/main/doc/REQUISITES_SymfonyTechnicalTestKimia.pdf).
 This file summarises what the code actually does.
 
 ## Stack
