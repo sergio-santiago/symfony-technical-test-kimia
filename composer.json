@@ -1,6 +1,14 @@
 {
+    "name": "sergio-santiago/technical-test-symfony-kimia",
+    "description": "Symfony technical test: a minigame with a CRUD backend (PHP, Symfony 5, Twig and Docker)",
     "type": "project",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Sergio Santiago Henares",
+            "email": "sersanhen@gmail.com"
+        }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
